@@ -33,22 +33,22 @@ public class TestLucene {
 		Directory index = createIndex(analyzer);
 
 		// 3. 查询器
-/*		File f = new File("d:/lol.txt");*/
+		File f = new File("d:/lol.txt");
 		// 创建文件字符流
 		// 缓存流必须建立在一个存在的流的基础上
-/*		try (
+		try (
 				FileReader fr = new FileReader(f);
 				BufferedReader br = new BufferedReader(fr);
-		)*/
+		)
 
-        Scanner s = new Scanner(System.in);
+/*        Scanner s = new Scanner(System.in);*/
         
-		while(true){
+		{while(true){
         	System.out.print("请输入查询关键字：");
-            String keyword = s.nextLine();
-/*			String keyword = br.readLine();*/
-/*            if (null == keyword)
-                break;*/
+/*            String keyword = s.nextLine();*/
+			String keyword = br.readLine();
+            if (null == keyword)
+                break;
             System.out.println("当前关键字是："+keyword);
     		Query query = new QueryParser( "name", analyzer).parse(keyword);
 
@@ -63,10 +63,10 @@ public class TestLucene {
     		// 6. 关闭查询
     		reader.close();
         }
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private static void showSearchResults(IndexSearcher searcher, ScoreDoc[] hits, Query query, IKAnalyzer analyzer) throws Exception {
